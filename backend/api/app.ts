@@ -11,7 +11,11 @@ const app = express();
 //middlewares
 //app.use(cors({origin: "https://kasubay-ai.vercel.app", credentials: true}));
 // Enable CORS for your client URL
-
+app.use(cors({
+    origin: 'https://kasubay-ai.vercel.app', // Allow only this origin
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+    credentials: true, // Allow cookies and credentials if needed
+  }));
   
 
 app.use(express.json());
