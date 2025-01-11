@@ -13,13 +13,9 @@ const app = express();
 // Enable CORS for your client URL
 app.use(cors({
     origin: 'https://kasubay-ai.vercel.app/', // Allow only this origin
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
     credentials: true, // Allow cookies and credentials if needed
   }));
-  // Root path route
-app.get('/', (req, res) => {
-    res.send('Connected to the database and server is running!'); // Customize this message
-  });
+  
 
 app.use(express.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));
