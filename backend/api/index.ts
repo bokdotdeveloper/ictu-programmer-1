@@ -1,4 +1,4 @@
-/*
+
 import app from "./app.js"
 import { connectToDatabase } from "./db/connection.js";
 
@@ -8,7 +8,9 @@ connectToDatabase().then(()=>{
   app.listen(5000, ()=> console.log("Server Open and Connected to the Database 👌"));
 })
 .catch((error)=>console.log(error));
-*/
+
+
+/*
 import app from "./app.js";
 import { connectToDatabase } from "./db/connection.js";
 
@@ -30,4 +32,4 @@ export default async function handler(req, res) {
     res.status(500).send("Internal Server Error");
   }
 }
-
+*/
