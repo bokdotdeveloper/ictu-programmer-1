@@ -9,7 +9,7 @@ config();
 const app = express();
 
 //middlewares
-app.use(cors({origin: "https://kasubay-ai.vercel.app/", credentials: true}));
+app.use(cors({origin: "https://kasubay-ai.vercel.app", credentials: true}));
 app.use(express.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
