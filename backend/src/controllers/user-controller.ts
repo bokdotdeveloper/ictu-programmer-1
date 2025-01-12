@@ -97,10 +97,12 @@ export const userLogin = async (
         expires.setDate(expires.getDate()+7);
         res.cookie(COOKIE_NAME,token, {
             path:"/", 
-            domain:"localhost",
+            domain:"https://kasubay-ai-server2.vercel.app/",
             expires,
             httpOnly:true,
             signed: true,
+            secure: true,
+            sameSite: 'none',      // Required for cross-origin requests
         });
 
         return res.status(200).json({message: "OK", name: user.name, email:user.email});
