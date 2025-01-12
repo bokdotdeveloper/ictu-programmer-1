@@ -40,9 +40,10 @@ export const userSignup = async (
         //
         res.clearCookie(COOKIE_NAME, {
             httpOnly: true,
-            domain:"localhost",
-            signed: true,
-            path: "/",
+            secure: true,       // Ensure the same settings as when setting the cookie
+            sameSite: 'none',   // Important for cross-origin cookies
+             path: '/',          // Ensure it matches the path used when the cookie was set
+
 
         });
         //
@@ -50,11 +51,11 @@ export const userSignup = async (
         const expires = new Date();
         expires.setDate(expires.getDate()+7);
         res.cookie(COOKIE_NAME,token, {
-            path:"/", 
-            domain:"localhost",
-            expires,
-            httpOnly:true,
-            signed: true,
+            httpOnly: true,           // Prevent JavaScript access
+            secure: true,             // Ensure cookies are sent over HTTPS
+            sameSite: 'none',         // Allow cross-origin requests
+            path: '/',                // Valid for all routes
+            expires: new Date(Date.now() + 1000 * 60 * 60 * 24), // 1 day
         });
         return res.status(201).json({message: "OK", name: user.name, email:user.email});
     } catch (error) {
@@ -86,8 +87,9 @@ export const userLogin = async (
         //
         res.clearCookie(COOKIE_NAME, {
             httpOnly: true,
-            signed: true,
-            path: "/",
+            secure: true,       // Ensure the same settings as when setting the cookie
+            sameSite: 'none',   // Important for cross-origin cookies
+             path: '/',          // Ensure it matches the path used when the cookie was set
 
         });
         //after successful login, generate token
@@ -153,9 +155,9 @@ export const userLogout = async (
         }
         res.clearCookie(COOKIE_NAME, {
             httpOnly: true,
-            domain:"localhost",
-            signed: true,
-            path: "/",
+            secure: true,       // Ensure the same settings as when setting the cookie
+            sameSite: 'none',   // Important for cross-origin cookies
+             path: '/',          // Ensure it matches the path used when the cookie was set
 
         });
         return res.status(200).json({message: "OK", name: user.name, email:user.email});
