@@ -13,17 +13,11 @@ const app = express();
 //app.use(cors({origin: "https://kasubay-ai.vercel.app", credentials: true}));
 // Enable CORS for your client URL
 app.use(cors({
-    origin: 'localhost:5173', // Allow only this origin
+    origin: ['http://localhost:5173', "https://kasubay-ai.vercel.app"], // Allow only this origin
     credentials: true, // Allow cookies and credentials if needed
   }));
 
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "../frontend/dist")));
-  
-    app.get("*", (req, res) => {
-      res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
-    });
-}
+
 
 app.use(express.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));
