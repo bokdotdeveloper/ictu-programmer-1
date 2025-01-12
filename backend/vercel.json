@@ -3,6 +3,6 @@
     "builds": [{"src": "index.ts", 
     "use": 
     "@vercel/node"}],
-    "routes" : [{"src" : "/(.*)" , "dest": "dist/$1"}]
+    "routes" : [{"src" : "/(.*)" , "dest": "dist"}]
 }
 
