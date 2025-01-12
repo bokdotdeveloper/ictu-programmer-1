@@ -86,23 +86,20 @@ export const userLogin = async (
         //
         res.clearCookie(COOKIE_NAME, {
             httpOnly: true,
-            domain:"localhost",
             signed: true,
             path: "/",
 
         });
         //after successful login, generate token
         const token = createToken(user._id.toString(), user.email, "7d");
-        const expires = new Date();
-        expires.setDate(expires.getDate()+7);
+        //const expires = new Date();
+        //expires.setDate(expires.getDate()+7);
         res.cookie(COOKIE_NAME,token, {
-            path:"/", 
-            domain:"https://kasubay-ai-server2.vercel.app/",
-            expires,
-            httpOnly:true,
-            signed: true,
-            secure: true,
-            sameSite: 'none',      // Required for cross-origin requests
+            httpOnly: true,           // Prevent JavaScript access
+            secure: true,             // Ensure cookies are sent over HTTPS
+            sameSite: 'none',         // Allow cross-origin requests
+            path: '/',                // Valid for all routes
+            expires: new Date(Date.now() + 1000 * 60 * 60 * 24), // 1 day
         });
 
         return res.status(200).json({message: "OK", name: user.name, email:user.email});
