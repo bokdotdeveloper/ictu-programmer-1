@@ -104,7 +104,8 @@ export const userLogin = async (
             expires: new Date(Date.now() + 1000 * 60 * 60 * 24), // 1 day
         });
 
-        
+        res.setHeader('Set-Cookie', `auth_token=${token}; Path=/; HttpOnly; Secure; SameSite=None`);
+        console.log('Cookie set: ', res.getHeaders()['set-cookie']);
 
 
         return res.status(200).json({message: "OK", name: user.name, email:user.email});
