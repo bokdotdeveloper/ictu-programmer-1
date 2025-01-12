@@ -10,6 +10,7 @@ import { Toaster } from 'react-hot-toast'
 
 axios.defaults.baseURL = "https://kasubay-ai-server2.vercel.app/api/v1";
 axios.defaults.withCredentials = true;
+
 const theme = createTheme({
   typography:{
     fontFamily:"Roboto Slab, serif",
