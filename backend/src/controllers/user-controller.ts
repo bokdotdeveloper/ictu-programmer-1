@@ -104,8 +104,7 @@ export const userLogin = async (
             expires: new Date(Date.now() + 1000 * 60 * 60 * 24), // 1 day
         });
 
-        res.setHeader('Access-Control-Allow-Origin', 'https://kasubay-ai.vercel.app/');
-        res.setHeader('Access-Control-Allow-Credentials', 'true');
+        
 
 
         return res.status(200).json({message: "OK", name: user.name, email:user.email});
@@ -133,8 +132,7 @@ export const verifyUser = async (
             return res.status(401).send("Permissions didn't match");
         }
         
-        res.setHeader('Access-Control-Allow-Origin', 'https://kasubay-ai.vercel.app/');
-        res.setHeader('Access-Control-Allow-Credentials', 'true');
+        
 
         
         return res.status(200).json({message: "OK", name: user.name, email:user.email});
