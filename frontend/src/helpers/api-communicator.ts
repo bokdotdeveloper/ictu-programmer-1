@@ -22,7 +22,8 @@ export const checkAuthStatus = async () => {
 
 
 export const sendChatRequest = async (message: string) => {
-    const res = await axios.post("/chat/new", { message });
+    const res = await axios.post("/chat/new", { message },  {
+      withCredentials: true});
     if (res.status !== 200) {
       throw new Error("Unable to send chat");
     }
@@ -31,7 +32,8 @@ export const sendChatRequest = async (message: string) => {
   };
 
   export const getUserChats = async () => {
-    const res = await axios.get("/chat/all-chats");
+    const res = await axios.get("/chat/all-chats",  {
+      withCredentials: true});
     if (res.status !== 200) {
       throw new Error("Unable to send chat");
     }
@@ -49,7 +51,8 @@ export const sendChatRequest = async (message: string) => {
   };
 
   export const logoutUser = async () => {
-    const res = await axios.get("/user/logout");
+    const res = await axios.get("/user/logout",  {
+      withCredentials: true});
     if (res.status !== 200) {
       throw new Error("Unable to delete chat");
     }

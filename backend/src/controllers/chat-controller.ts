@@ -66,6 +66,8 @@ export const sendChatsToUser = async (
         }
 
         return res.status(200).json({message: "OK", chats: user.chats});
+
+        
     } catch (error) {
         console.log(error);
         return res.status(200).json({message: "Error", cause: error.message});
