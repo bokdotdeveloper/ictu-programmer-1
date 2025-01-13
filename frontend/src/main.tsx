@@ -8,7 +8,7 @@ import { AuthProvider } from './context/AuthContext.tsx'
 import axios from 'axios'
 import { Toaster } from 'react-hot-toast'
 
-axios.defaults.baseURL = "https://kasubay-ai-server2.vercel.app/api/v1";
+axios.defaults.baseURL = import.meta.env.MODE === "development" ? "http://localhost:5000/api/v1" : "/api/v1" 
 axios.defaults.withCredentials = true;
 
 const theme = createTheme({
