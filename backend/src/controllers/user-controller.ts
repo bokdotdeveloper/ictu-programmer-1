@@ -83,17 +83,13 @@ export const userLogin = async (
         if(!isPasswordCorrect){
             return res.status(403).send("Incorrect Password");
         }
-        
-       
-
-        
         //after successful login, generate token
         const token = createToken(user._id.toString(), user.email, "7d");
         //const expires = new Date();
         //expires.setDate(expires.getDate()+7);
         res.cookie(COOKIE_NAME,token, {
             httpOnly: true,           // Prevent JavaScript access
-            secure: true,             // Ensure cookies are sent over HTTPS
+            secure: process.env.NODE_ENV === 'production', // Secure only in production
             sameSite: 'none',         // Allow cross-origin requests
             path: '/',                // Valid for all routes
             expires: new Date(Date.now() + 1000 * 60 * 60 * 24), // 1 day
