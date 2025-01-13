@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const loginUser = async (email:string, password: string) => {
-    const res = await axios.post("https://kasubay-ai-server2.vercel.app/user/login", {email,password}, {withCredentials: true});
+    const res = await axios.post("/user/login", {email,password}, {withCredentials: true});
 
     if (res.status !== 200){
         throw new Error("Unable to login");
@@ -11,7 +11,7 @@ export const loginUser = async (email:string, password: string) => {
 }
 
 export const checkAuthStatus = async () => {
-    const res = await axios.get("https://kasubay-ai-server2.vercel.app/user/auth-status");
+    const res = await axios.get("/user/auth-status");
 
     if (res.status !== 200){
         throw new Error("Unable to authenticate");
@@ -22,7 +22,7 @@ export const checkAuthStatus = async () => {
 
 
 export const sendChatRequest = async (message: string) => {
-    const res = await axios.post("https://kasubay-ai-server2.vercel.app/chat/new", { message },  {
+    const res = await axios.post("/chat/new", { message },  {
       withCredentials: true});
     if (res.status !== 200) {
       throw new Error("Unable to send chat");
@@ -32,7 +32,7 @@ export const sendChatRequest = async (message: string) => {
   };
 
   export const getUserChats = async () => {
-    const res = await axios.get("https://kasubay-ai-server2.vercel.app/chat/all-chats",  {
+    const res = await axios.get("/chat/all-chats",  {
       withCredentials: true});
     if (res.status !== 200) {
       throw new Error("Unable to send chat");
