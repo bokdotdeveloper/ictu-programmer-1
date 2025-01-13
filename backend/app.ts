@@ -26,7 +26,10 @@ app.use(cors({
     next();
   });
   
-
+  app.options('*', cors({
+    origin: 'https://kasubay-ai.vercel.app',
+    credentials: true,
+  }));
 
 app.use(express.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));

@@ -105,8 +105,7 @@ export const userLogin = async (
         });
 
         
-        res.setHeader('Referrer-Policy', 'no-referrer');
-
+        
         return res.status(200).json({message: "OK", name: user.name, email:user.email});
     } catch (error) {
         console.log(error);
