@@ -84,14 +84,9 @@ export const userLogin = async (
             return res.status(403).send("Incorrect Password");
         }
         
-        //
-        res.clearCookie(COOKIE_NAME, {
-            httpOnly: true,
-            secure: true,       // Ensure the same settings as when setting the cookie
-            sameSite: 'none',   // Important for cross-origin cookies
-             path: '/',          // Ensure it matches the path used when the cookie was set
+       
 
-        });
+        
         //after successful login, generate token
         const token = createToken(user._id.toString(), user.email, "7d");
         //const expires = new Date();
