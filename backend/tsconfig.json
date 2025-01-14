@@ -7,5 +7,5 @@
     "outDir": "dist",
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src/**/*.ts", "index.ts", "app.ts"]
+  "include": ["src/**/*.ts", "index.ts"]
 }
