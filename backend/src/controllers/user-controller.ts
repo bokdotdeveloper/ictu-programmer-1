@@ -74,7 +74,6 @@ export const userLogin = async (
     ) =>{
 
     try {
-         //user login
         const {email,password} = req.body;
         const user = await User.findOne({email});
         if(!user){
@@ -84,20 +83,19 @@ export const userLogin = async (
         if(!isPasswordCorrect){
             return res.status(403).send("Incorrect Password");
         }
-        //after successful login, generate token
+    
         const token = createToken(user._id.toString(), user.email, "7d");
-        //const expires = new Date();
-        //expires.setDate(expires.getDate()+7);
+        const expires = new Date();
+        expires.setDate(expires.getDate() + 7);
         res.cookie(COOKIE_NAME,token, {
             httpOnly: true,
-            secure: false, // Disable for development
+            secure: true, // Disable for development
              sameSite: 'none', // Allows normal cookie behavior
              path: '/',
-             expires: new Date(Date.now() + 1000 * 60 * 60 * 24), // 1 day
+             expires,
+             signed: true
             
         });
-
-        
         
         return res.status(200).json({message: "OK", name: user.name, email:user.email});
     } catch (error) {
