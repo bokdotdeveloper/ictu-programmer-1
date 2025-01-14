@@ -49,7 +49,7 @@ export const userSignup = async (
         //
         const token = createToken(user._id.toString(), user.email, "7d");
         const expires = new Date();
-        expires.setDate(expires.getDate()+7);
+        //expires.setDate(expires.getDate()+7);
         res.cookie(COOKIE_NAME,token, {
             httpOnly: true,           // Prevent JavaScript access
             secure: true,             // Ensure cookies are sent over HTTPS
@@ -123,9 +123,6 @@ export const verifyUser = async (
         if(user._id.toString() !== res.locals.jwtData.id){
             return res.status(401).send("Permissions didn't match");
         }
-        
-        
-
         
         return res.status(200).json({message: "OK", name: user.name, email:user.email});
     } catch (error) {

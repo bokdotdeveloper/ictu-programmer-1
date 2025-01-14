@@ -1,8 +1,39 @@
 {
     "version": 2,
-    "builds": [{"src": "*.ts", 
-    "use": 
-    "@vercel/node"}],
-    "routes" : [{"src" : "/(.*)" , "dest": "/"}]
-}
-
+    "builds": [
+      {
+        "src": "backend/src/index.ts",
+        "use": "@vercel/node",
+        "config": {
+          "includeFiles": ["backend/src/**/*.ts"]
+        }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/(.*)",
+        "dest": "backend/src/index.ts"
+      }
+    ],
+    "headers": [
+      {
+        "source": "/api/(.*)",
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "https://kasubay-ai.vercel.app"
+          },
+          {
+            "key": "Access-Control-Allow-Credentials",
+            "value": "true"
+          }
+        ]
+      }
+    ],
+    "env": {
+      "PORT": "5000",
+      "COOKIE_SECRET": "@cookie_secret",
+      "DATABASE_URL": "@database_url"
+    }
+  }
+  
