@@ -89,11 +89,11 @@ export const userLogin = async (
         //const expires = new Date();
         //expires.setDate(expires.getDate()+7);
         res.cookie(COOKIE_NAME,token, {
-            httpOnly: true,           // Prevent JavaScript access
-            secure: process.env.NODE_ENV === 'production', // Secure only in production
-            sameSite: 'none',         // Allow cross-origin requests
-            path: '/',                // Valid for all routes
-            expires: new Date(Date.now() + 1000 * 60 * 60 * 24), // 1 day
+            httpOnly: true,
+            secure: false, // Disable for development
+             sameSite: 'lax', // Allows normal cookie behavior
+             path: '/',
+             expires: new Date(Date.now() + 1000 * 60 * 60 * 24), // 1 day
             
         });
 
