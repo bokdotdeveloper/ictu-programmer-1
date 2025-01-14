@@ -1,5 +1,4 @@
 import {Router} from 'express';
-import app from '../../app.js';
 import userRoutes from './user-routes.js';
 import chatRoutes from './chat-routes.js';
 
