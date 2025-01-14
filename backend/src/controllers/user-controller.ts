@@ -91,7 +91,7 @@ export const userLogin = async (
         res.cookie(COOKIE_NAME,token, {
             httpOnly: true,
             secure: false, // Disable for development
-             sameSite: 'lax', // Allows normal cookie behavior
+             sameSite: 'none', // Allows normal cookie behavior
              path: '/',
              expires: new Date(Date.now() + 1000 * 60 * 60 * 24), // 1 day
             
