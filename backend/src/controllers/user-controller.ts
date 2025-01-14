@@ -94,7 +94,7 @@ export const userLogin = async (
             sameSite: 'none',         // Allow cross-origin requests
             path: '/',                // Valid for all routes
             expires: new Date(Date.now() + 1000 * 60 * 60 * 24), // 1 day
-            domain: "https://kasubay-ai-server2.vercel.app",
+            
         });
 
         
