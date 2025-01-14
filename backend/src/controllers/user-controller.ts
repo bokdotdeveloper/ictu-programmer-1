@@ -84,17 +84,20 @@ export const userLogin = async (
             return res.status(403).send("Incorrect Password");
         }
 
+        const expires = new Date();
+        expires.setDate(expires.getDate() + 7);
+
         res.clearCookie(COOKIE_NAME, {
             httpOnly: true,
             signed: true,
             path: "/",
             sameSite: 'none',
-            secure: true
+            secure: true,
+            expires
           });
     
         const token = createToken(user._id.toString(), user.email, "7d");
-        const expires = new Date();
-        expires.setDate(expires.getDate() + 7);
+       
         res.cookie(COOKIE_NAME,token, {
             httpOnly: true,
             secure: true, // Disable for development
