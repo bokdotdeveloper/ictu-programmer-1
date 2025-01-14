@@ -91,9 +91,8 @@ export const userLogin = async (
             httpOnly: true,
             signed: true,
             path: "/",
-            sameSite: 'none',
-            secure: true,
-            expires
+            expires,
+            domain: "https://kasubay-ai-server2.vercel.app"
           });
     
         const token = createToken(user._id.toString(), user.email, "7d");
@@ -104,7 +103,8 @@ export const userLogin = async (
              sameSite: 'none', // Allows normal cookie behavior
              path: '/',
              expires,
-             signed: true
+             signed: true,
+             domain: "https://kasubay-ai-server2.vercel.app"
             
         });
         
