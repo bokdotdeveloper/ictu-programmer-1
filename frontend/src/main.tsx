@@ -20,7 +20,7 @@ const theme = createTheme({
   },
 });
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+ 
     <AuthProvider>
       <BrowserRouter>
         <ThemeProvider theme={theme}>
@@ -29,5 +29,5 @@ createRoot(document.getElementById('root')!).render(
         </ThemeProvider>
       </BrowserRouter>
       </AuthProvider>
-  </StrictMode>,
+ 
 )
