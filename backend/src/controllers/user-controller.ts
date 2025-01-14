@@ -88,7 +88,8 @@ export const userLogin = async (
             httpOnly: true,
             signed: true,
             path: "/",
-            sameSite: 'none'
+            sameSite: 'none',
+            secure: true
           });
     
         const token = createToken(user._id.toString(), user.email, "7d");
