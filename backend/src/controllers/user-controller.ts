@@ -57,6 +57,7 @@ export const userSignup = async (
             path: '/',                // Valid for all routes
             expires: new Date(Date.now() + 1000 * 60 * 60 * 24), // 1 day
         });
+
         return res.status(201).json({message: "OK", name: user.name, email:user.email});
     } catch (error) {
         console.log(error);
@@ -93,6 +94,7 @@ export const userLogin = async (
             sameSite: 'none',         // Allow cross-origin requests
             path: '/',                // Valid for all routes
             expires: new Date(Date.now() + 1000 * 60 * 60 * 24), // 1 day
+            domain: "kasubay-ai-server2.vercel.app",
         });
 
         
