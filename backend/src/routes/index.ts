@@ -4,7 +4,7 @@ import chatRoutes from './chat-routes.js';
 
 const appRouter = Router();
 
-appRouter.use("https://kasubay-ai-server2.vercel.app/api/v1/user", userRoutes);
-appRouter.use("https://kasubay-ai-server2.vercel.app/api/v1/chat", chatRoutes);
+appRouter.use("/user", userRoutes);
+appRouter.use("/chat", chatRoutes);
 
 export default appRouter;
