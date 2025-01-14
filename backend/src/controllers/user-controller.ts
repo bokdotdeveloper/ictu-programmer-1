@@ -83,6 +83,12 @@ export const userLogin = async (
         if(!isPasswordCorrect){
             return res.status(403).send("Incorrect Password");
         }
+
+        res.clearCookie(COOKIE_NAME, {
+            httpOnly: true,
+            signed: true,
+            path: "/",
+          });
     
         const token = createToken(user._id.toString(), user.email, "7d");
         const expires = new Date();
