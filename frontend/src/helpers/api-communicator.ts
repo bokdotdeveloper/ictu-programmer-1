@@ -1,5 +1,5 @@
 import axios from "axios";
-axios.defaults.baseURL = "https://kasubay-ai-server2.vercel.app";
+axios.defaults.baseURL = "https://kasubay-ai-server2.vercel.app/api/v1";
 axios.defaults.withCredentials = true;
 
 export const loginUser = async (email: string, password: string) => {
