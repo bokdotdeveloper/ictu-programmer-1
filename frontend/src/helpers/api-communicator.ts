@@ -1,6 +1,6 @@
 import axios from "axios";
 export const loginUser = async (email: string, password: string) => {
-  const res = await axios.post("/user/login", { email, password });
+  const res = await axios.post("/user/login", { email, password }, {withCredentials: true});
   if (res.status !== 200) {
     throw new Error("Unable to login");
   }
