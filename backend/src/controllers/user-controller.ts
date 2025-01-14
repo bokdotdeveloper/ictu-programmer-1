@@ -92,7 +92,7 @@ export const userLogin = async (
             signed: true,
             path: "/",
             expires,
-            domain: "https://kasubay-ai-server2.vercel.app"
+           
           });
     
         const token = createToken(user._id.toString(), user.email, "7d");
@@ -104,7 +104,7 @@ export const userLogin = async (
              path: '/',
              expires,
              signed: true,
-             domain: "https://kasubay-ai-server2.vercel.app"
+            
             
         });
         
