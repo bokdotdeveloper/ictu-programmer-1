@@ -58,7 +58,7 @@ import {
       await logoutUser();
       setIsLoggedIn(false);
       setUser(null);
-      //window.location.reload();
+      window.location.reload();
     };
   
     const value = {
