@@ -30,6 +30,7 @@ import {
     const [user, setUser] = useState<User | null>(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
   
+    /*
     useEffect(() => {
       // fetch if the user's cookies are valid then skip login
       async function checkStatus() {
@@ -40,7 +41,23 @@ import {
         }
       }
       checkStatus();
+    }, []);*/
+
+    useEffect(() => {
+      async function checkStatus() {
+        const data = await checkAuthStatus();
+        if (data) {
+          setUser({ email: data.email, name: data.name });
+          setIsLoggedIn(true);
+        } else {
+          setUser(null);
+          setIsLoggedIn(false);
+        }
+      }
+      checkStatus();
     }, []);
+
+
     const login = async (email: string, password: string) => {
       const data = await loginUser(email, password);
       if (data) {
@@ -57,8 +74,8 @@ import {
     };
     const logout = async () => {
       await logoutUser();
-      localStorage.removeItem("auth_token"); // If you're using localStorage
-      sessionStorage.removeItem("auth_token"); // If using sessionStorage
+      document.cookie = "auth_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; // Clear cookie
+
       setIsLoggedIn(false);
       setUser(null);
       window.location.reload();
