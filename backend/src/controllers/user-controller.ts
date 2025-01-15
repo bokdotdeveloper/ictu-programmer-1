@@ -37,25 +37,28 @@ export const userSignup = async (
         const user = new User({name, email, password: hashedPassword})
         await user.save();
 
-        //
+        const expires = new Date();
+        expires.setDate(expires.getDate() + 7);
+
         res.clearCookie(COOKIE_NAME, {
             httpOnly: true,
-            secure: true,       // Ensure the same settings as when setting the cookie
-            sameSite: 'none',   // Important for cross-origin cookies
-             path: '/',          // Ensure it matches the path used when the cookie was set
-
-
-        });
-        //
+            signed: true,
+            path: "/",
+            expires,
+           
+          });
+    
         const token = createToken(user._id.toString(), user.email, "7d");
-        const expires = new Date();
-        //expires.setDate(expires.getDate()+7);
+       
         res.cookie(COOKIE_NAME,token, {
-            httpOnly: true,           // Prevent JavaScript access
-            secure: true,             // Ensure cookies are sent over HTTPS
-            sameSite: 'none',         // Allow cross-origin requests
-            path: '/',                // Valid for all routes
-            expires: new Date(Date.now() + 1000 * 60 * 60 * 24), // 1 day
+            httpOnly: true,
+            secure: true, // Disable for development
+             sameSite: 'none', // Allows normal cookie behavior
+             path: '/',
+             expires,
+             signed: true,
+            
+            
         });
 
         return res.status(201).json({message: "OK", name: user.name, email:user.email});
