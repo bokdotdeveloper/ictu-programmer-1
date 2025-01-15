@@ -152,7 +152,7 @@ const Chat = () => {
       >
         <Typography 
           sx={{textAlign: "center", fontSize: "40px", color: "white", mb: 2, mx: "auto", fontWeight: 600}}
-        >Talk to sAntI 
+        >Talk to s<span style={{color: "red"}}>A</span>nt<span style={{color: "yellow"}}>I </span>
         </Typography>
 
         <Box
