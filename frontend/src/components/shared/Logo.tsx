@@ -17,7 +17,7 @@ const Logo = () => {
                 alt="openai" 
                 width={'30px'} 
                 height={'30px'}
-                className="image-inverted"
+                
             />
 
             </Link>{" "}

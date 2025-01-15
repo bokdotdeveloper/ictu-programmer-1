@@ -37,7 +37,7 @@ const Home = () => {
           />
           <img
             className="image-inverted rotate"
-            src="openai.png"
+            src="openai_logo.png"
             alt="openai"
             style={{ width: "200px", margin: "auto" }}
           />
