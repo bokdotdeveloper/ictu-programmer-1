@@ -160,13 +160,15 @@ export const userLogout = async (
         if(user._id.toString() !== res.locals.jwtData.id){
             return res.status(401).send("Permissions didn't match");
         }
+        
+
         res.clearCookie(COOKIE_NAME, {
             httpOnly: true,
-            secure: true,       // Ensure the same settings as when setting the cookie
-            sameSite: 'none',   // Important for cross-origin cookies
-             path: '/',          // Ensure it matches the path used when the cookie was set
-
-        });
+            signed: true,
+            path: "/",
+            
+           
+          });
         return res.status(200).json({message: "OK", name: user.name, email:user.email});
     } catch (error) {
         console.log(error);
