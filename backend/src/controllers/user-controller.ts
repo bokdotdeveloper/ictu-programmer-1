@@ -161,11 +161,15 @@ export const userLogout = async (
             return res.status(401).send("Permissions didn't match");
         }
         
+        const expires = new Date();
+
+        
 
         res.clearCookie(COOKIE_NAME, {
             httpOnly: true,
             signed: true,
             path: "/",
+            
             
            
           });

@@ -78,9 +78,8 @@ import {
 
       setIsLoggedIn(false);
       setUser(null);
-      window.location.reload();
-      setIsLoggedIn(false);
-      setUser(null);
+      //window.location.reload();
+      
     };
   
     const value = {
