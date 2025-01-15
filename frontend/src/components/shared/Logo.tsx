@@ -30,7 +30,7 @@ const Logo = () => {
                         
                 }}
                 >
-                    <span style={{fontSize:"20px"}}>MERN</span>-GPT
+                    <span style={{fontSize:"20px"}}>kasUbAy</span>-A.I.
                 </Typography>
     </div>
   )

@@ -152,7 +152,7 @@ const Chat = () => {
       >
         <Typography 
           sx={{textAlign: "center", fontSize: "40px", color: "white", mb: 2, mx: "auto", fontWeight: 600}}
-        >Model - GPT 3.5 Turbo
+        >Talk to sAntI 
         </Typography>
 
         <Box
