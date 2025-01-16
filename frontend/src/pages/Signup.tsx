@@ -20,7 +20,7 @@ const Signup = () => {
       toast.success("Signed Up Successfully", { id: "signup" });
     } catch (error) {
       console.log(error);
-      toast.error("Signing Up Failed", { id: "signup" });
+      toast.error("Check if all fields are filled. Password must be at least 6 characters.", { id: "signup" });
     }
   };
   //@ts-ignore
