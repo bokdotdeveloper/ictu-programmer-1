@@ -1,7 +1,45 @@
 {
   "version": 2,
-  "builds": [{"src": "*.ts", 
-  "use": 
-  "@vercel/node"}],
-  "routes" : [{"src" : "/(.*)" , "dest": "/"}]
+  "projects": {
+    "backend": {
+      "source": "./backend",
+      "builds": [
+        {
+          "src": "backend/src/index.ts",
+          "use": "@vercel/node"
+        }
+      ],
+      "routes": [
+        {
+          "src": "/api/(.*)",
+          "dest": "backend/src/index.ts"
+        }
+      ]
+    },
+    "frontend": {
+      "source": "./frontend",
+      "builds": [
+        {
+          "src": "frontend/package.json",
+          "use": "@vercel/static-build"
+        }
+      ],
+      "routes": [
+        {
+          "src": "/(.*)",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/backend"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/frontend"
+    }
+  ]
 }
