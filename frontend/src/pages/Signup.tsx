@@ -5,6 +5,7 @@ import CustomizedInput from "../components/shared/CustomizedInput";
 import { toast } from "react-hot-toast";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { AxiosError } from 'axios';
 const Signup = () => {
   const navigate = useNavigate();
   const auth = useAuth();
@@ -20,7 +21,13 @@ const Signup = () => {
       toast.success("Signed Up Successfully", { id: "signup" });
     } catch (error) {
       console.log(error);
-      toast.error("Check if all fields are filled. Password must be at least 6 characters.", { id: "signup" });
+  
+      // Check if error is an instance of AxiosError (or any custom error type you're using)
+  if (error instanceof AxiosError && error.response?.status === 401) {
+    toast.error("User already registered", { id: "signup" });
+  } else {
+    toast.error("Check if all fields are filled. Password must be at least 6 characters.", { id: "signup" });
+  }
     }
   };
   //@ts-ignore
