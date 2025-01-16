@@ -74,8 +74,6 @@ import {
     };
     const logout = async () => {
       await logoutUser();
-      document.cookie = "auth_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; // Clear cookie
-
       setIsLoggedIn(false);
       setUser(null);
       //window.location.reload();

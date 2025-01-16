@@ -16,7 +16,7 @@ type Message = {
 
 const Chat = () => {
   const navigate = useNavigate();
-  const inputRef = useRef<HTMLInputElement | null>(null);
+  const inputRef = useRef<HTMLTextAreaElement | null>(null);
   const auth = useAuth();
   const [chatMessages, setChatMessages] = useState<Message[]>([]);
   
@@ -170,10 +170,23 @@ const Chat = () => {
 
           }}
         >
-          {chatMessages.map((chat, index)=> (
-            //@ts-ignore
-            <ChatItem content={chat.content} role={chat.role} key={index} />
-          ))}
+          {chatMessages.length === 0 ? (
+            <Typography
+              sx={{
+                fontSize: "20px",
+                color: "gray",
+                textAlign: "center",
+              }}
+            >
+            No messages yet. Start the conversation!
+            </Typography>
+            ) : (
+              chatMessages.map((chat, index) => (
+              //@ts-ignore
+              <ChatItem content={chat.content} role={chat.role} key={index} />
+                ))
+            )}
+          
         </Box>
           <div 
             style={{
@@ -185,19 +198,24 @@ const Chat = () => {
               marginRight: "auto",
             }}>
               {" "}
-              <input
-                ref={inputRef}
-                type='test'
-                style={{
-                  width: "100%",
-                  backgroundColor: "transparent",
-                  padding: "30px",
-                  border: "none",
-                  outline: "none",
-                  color: "white",
-                  fontSize: "20px",
-               }}
-              />
+              <textarea
+              ref={inputRef}
+              placeholder="Write a message..."
+              style={{
+                width: "100%",
+                backgroundColor: "transparent",
+                padding: "20px",
+                border: "none",
+                outline: "none",
+                color: "white",
+                fontSize: "16px",
+                resize: "none", // Prevents resizing if you want to control the height
+                height: "80px", // Sets a default height
+                overflow: "auto", // Ensures proper scroll behavior for large input
+              }}
+              rows={3} // Optional: Default number of rows for the textarea
+ 
+            />
               <IconButton onClick={handleSubmit} sx={{ml: "auto", color: "white", mx: 1}}><IoMdSend/></IconButton>
             </div>
         
