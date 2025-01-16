@@ -15,7 +15,7 @@ const app = express();
 // Middleware setup
 app.use(
   cors({
-    origin: "https://kasubay-ai.vercel.app", // Allow only this origin
+    origin: ["https://kasubay-ai.vercel.app", "https://kasubay-ai.info"] ,// Allow only this origin
     credentials: true, // Allow cookies and credentials if needed
   })
 );
