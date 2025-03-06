@@ -92,6 +92,7 @@ export const userLogin = async (
 
         res.clearCookie(COOKIE_NAME, {
             httpOnly: true,
+            domain: "localhost",
             signed: true,
             path: "/",
            
@@ -105,6 +106,7 @@ export const userLogin = async (
             secure: true, // Disable for development
              sameSite: 'none', // Allows normal cookie behavior
              path: '/',
+             domain: "localhost",
              expires,
              signed: true,
             
